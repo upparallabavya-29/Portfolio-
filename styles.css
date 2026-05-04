@@ -9,9 +9,42 @@
     --glass-bg: rgba(30, 41, 59, 0.4);
     --glass-border: rgba(255, 255, 255, 0.05);
     --card-hover: rgba(30, 41, 59, 0.7);
+    --glass-hover-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.5);
+    --btn-border: rgba(255, 255, 255, 0.2);
+    --btn-hover-bg: rgba(255, 255, 255, 0.05);
+    --header-bg: rgba(2, 6, 23, 0.8);
+    --header-scrolled-bg: rgba(2, 6, 23, 0.95);
+    --header-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --tag-bg: rgba(255, 255, 255, 0.05);
+    --tag-border: rgba(255, 255, 255, 0.1);
+    --divider: rgba(255, 255, 255, 0.05);
     --font-heading: 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+    --bg-dark: #e2e8f0;
+    --bg-darker: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --accent-primary: #7c3aed;
+    --accent-secondary: #e11d48;
+    --accent-tertiary: #0284c7;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --card-hover: rgba(255, 255, 255, 0.95);
+    --glass-hover-border: rgba(0, 0, 0, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --btn-border: rgba(0, 0, 0, 0.2);
+    --btn-hover-bg: rgba(0, 0, 0, 0.05);
+    --header-bg: rgba(248, 250, 252, 0.9);
+    --header-scrolled-bg: rgba(248, 250, 252, 0.95);
+    --header-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    --tag-bg: rgba(0, 0, 0, 0.05);
+    --tag-border: rgba(0, 0, 0, 0.1);
+    --divider: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -112,8 +145,8 @@ body {
 .glass-card:hover {
     background: var(--card-hover);
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 20px 40px -20px var(--glass-shadow);
 }
 
 .btn-primary,
@@ -139,14 +172,14 @@ body {
 
 .btn-secondary {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--btn-border);
     color: var(--text-primary);
     margin-left: 1rem;
 }
 
 .btn-secondary:hover {
     border-color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--btn-hover-bg);
 }
 
 /* Header & Nav */
@@ -156,7 +189,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(2, 6, 23, 0.8);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--glass-border);
 }
@@ -197,6 +230,24 @@ body {
 
 .nav-links a:not(.btn-primary):hover {
     color: var(--text-primary);
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--accent-secondary);
+    transform: rotate(15deg);
 }
 
 .hamburger {
@@ -400,12 +451,12 @@ body {
 }
 
 .skill-tags span {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--tag-bg);
     padding: 0.5rem 1rem;
     border-radius: 1.5rem;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--tag-border);
     transition: var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -683,7 +734,7 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--divider);
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
