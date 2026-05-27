@@ -444,47 +444,65 @@ body {
     color: var(--accent-secondary);
 }
 
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+.skill-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.skill-tags span {
-    background: var(--tag-bg);
-    padding: 0.5rem 1rem;
-    border-radius: 1.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--tag-border);
-    transition: var(--transition-base);
+.skill-card-item {
+    background: var(--bg-darker);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
     z-index: 1;
+    text-align: center;
 }
 
-.skill-tags span::before {
+.skill-card-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    transition: width 0.3s ease;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.5) 0%, rgba(139, 92, 246, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
     z-index: -1;
-    opacity: 0.2;
 }
 
-.skill-tags span:hover::before {
-    width: 100%;
+.skill-card-item i {
+    font-size: 2.5rem;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
-.skill-tags span:hover {
-    border-color: var(--accent-primary);
+.skill-card-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-primary);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+    transition: color 0.4s ease;
+}
+
+.skill-card-item:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-tertiary);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-item:hover::before {
+    opacity: 1;
+}
+
+.skill-card-item:hover i {
+    transform: scale(1.15) translateY(-2px);
 }
 
 /* Specific animation for Tools icons if needed, sharing the same style for now but could be specific */
