@@ -596,7 +596,7 @@ body {
 /* Projects */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Strict 2-column layout for perfect 2x2 alignment of 4 projects */
     gap: 2rem;
     align-items: start; /* Prevents cards from stretching to equal height, removing huge empty spaces */
 }
@@ -981,7 +981,8 @@ body {
     }
 
     .projects-grid,
-    .education-grid {
+    .education-grid,
+    .skills-grid {
         grid-template-columns: 1fr;
     }
 }
