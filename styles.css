@@ -598,6 +598,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    align-items: start; /* Prevents cards from stretching to equal height, removing huge empty spaces */
 }
 
 .project-card {
@@ -659,8 +660,7 @@ body {
 }
 
 .project-links {
-    margin-top: auto; /* Push to bottom */
-    padding-top: 1rem;
+    margin-top: 1.5rem; /* Replaced auto to prevent pushing to the bottom */
     display: flex;
     gap: 1rem;
 }
