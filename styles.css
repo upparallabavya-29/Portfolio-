@@ -738,7 +738,7 @@ body {
     width: 16px;
     height: 16px;
     right: -8px;
-    background-color: #4ade80; /* Bright cyan/green dot */
+    background-color: var(--accent-primary);
     border: 4px solid var(--bg-darker);
     top: 28px;
     border-radius: 50%;
@@ -772,7 +772,7 @@ body {
 }
 
 .edu-college {
-    color: #4ade80; /* Cyan matching the screenshot */
+    color: var(--accent-primary);
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 1.25rem;
@@ -788,7 +788,7 @@ body {
 }
 
 .edu-meta i {
-    color: #4ade80;
+    color: var(--accent-primary);
     margin-right: 0.35rem;
 }
 
