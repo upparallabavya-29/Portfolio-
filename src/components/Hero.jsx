@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaBrain, FaDatabase, FaLaptopCode, FaServer, FaGlobe } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaBrain, FaDatabase } from 'react-icons/fa';
 import confetti from 'canvas-confetti';
 import profileImage from '../assets/profile.jpg';
 
@@ -58,16 +58,8 @@ export default function Hero() {
               <span>Full Stack Developer</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaLaptopCode className="text-cyan-400" />
-              <span>Frontend Developer</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaServer className="text-accentPurple" />
-              <span>Backend Developer</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaGlobe className="text-teal-400" />
-              <span>Web Developer</span>
+              <FaDatabase className="text-accentPurple" />
+              <span>Python & Data Analyst</span>
             </div>
           </div>
 
