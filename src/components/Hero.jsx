@@ -1,8 +1,50 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaBrain, FaDatabase } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaLinkedin, 
+  FaEnvelope, 
+  FaCode, 
+  FaBrain, 
+  FaDatabase, 
+  FaLaptop, 
+  FaServer 
+} from 'react-icons/fa';
 import confetti from 'canvas-confetti';
 import profileImage from '../assets/profile.jpg';
+
+const badges = [
+  { text: "AI & ML Engineer", icon: FaBrain, color: "text-accentCyan", hoverBorder: "rgba(6, 182, 212, 0.4)" },
+  { text: "Full Stack Developer", icon: FaCode, color: "text-accentTeal", hoverBorder: "rgba(20, 184, 166, 0.4)" },
+  { text: "Frontend Developer", icon: FaLaptop, color: "text-accentCyan", hoverBorder: "rgba(6, 182, 212, 0.4)" },
+  { text: "Backend Developer", icon: FaServer, color: "text-accentPurple", hoverBorder: "rgba(139, 92, 246, 0.4)" },
+  { text: "Python & Data Analyst", icon: FaDatabase, color: "text-accentTeal", hoverBorder: "rgba(20, 184, 166, 0.4)" }
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 15, opacity: 0, scale: 0.9 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 12
+    }
+  }
+};
 
 export default function Hero() {
   const handleResumeDownload = () => {
@@ -47,21 +89,35 @@ export default function Hero() {
             I am a B.Tech <span className="text-accentCyan font-semibold">Artificial Intelligence</span> student (graduating 2026) and <span className="text-accentCyan font-semibold">Full-Stack Developer</span>. I build highly responsive modern web applications and deploy <span className="text-accentCyan font-semibold">AI-powered models</span> using Machine Learning, PyTorch, Supabase, and React.
           </p>
 
-          {/* Interactive Badges (Matching Reference Screenshot) */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaBrain className="text-accentCyan" />
-              <span>AI & ML Engineer</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaCode className="text-accentTeal" />
-              <span>Full Stack Developer</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:border-accentCyan/30 transition-colors duration-300">
-              <FaDatabase className="text-accentPurple" />
-              <span>Python & Data Analyst</span>
-            </div>
-          </div>
+          {/* Interactive Badges with Framer Motion Stagger and Hover Animation */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+          >
+            {badges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -3, 
+                    borderColor: badge.hoverBorder,
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    boxShadow: "0 8px 20px -6px rgba(6, 182, 212, 0.15)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 transition-all duration-300 cursor-pointer select-none"
+                >
+                  <Icon className={badge.color} />
+                  <span>{badge.text}</span>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
