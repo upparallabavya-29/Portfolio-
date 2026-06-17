@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 import confetti from 'canvas-confetti';
-import profileImage from '../assets/profile.png';
+import profileImage from '../assets/profile.jpg';
 
 const roles = [
   "AI & Full Stack Developer",
@@ -82,7 +82,6 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className="flex-1 space-y-6 text-center md:text-left z-10"
       >
-
         <div className="space-y-2">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold tracking-tight text-white leading-none">
             Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentCyan via-accentTeal to-accentPurple">Upparalla Bavya</span>
