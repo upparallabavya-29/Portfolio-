@@ -8,7 +8,7 @@ const education = [
     institution: "Ravindra College of Engineering for Women",
     location: "Kurnool, Andhra Pradesh",
     period: "2022 - 2026",
-    grade: "CGPA: 8.2 / 10"
+    grade: "CGPA: 8.4 / 10"
   },
   {
     degree: "Intermediate (MPC)",
