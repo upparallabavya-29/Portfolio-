@@ -54,11 +54,8 @@ export default function Hero() {
       colors: ['#06b6d4', '#14b8a6', '#8b5cf6']
     });
 
-    // Create a temporary mock link to download resume
-    const link = document.createElement('a');
-    link.href = '#';
-    // The user can substitute this with their actual resume file path later.
-    alert("Resume download triggered! You can link your 'resume.pdf' to this button inside src/components/Hero.jsx.");
+    // Open actual resume link in a new tab
+    window.open("https://drive.google.com/file/d/1WTw3OH96Hw1acqjLM-ej_glYgBIv2CNO/view?usp=drive_link", "_blank", "noopener,noreferrer");
   };
 
   const handleScrollToContact = (e) => {
