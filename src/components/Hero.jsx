@@ -70,14 +70,46 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-12 pt-12 md:pt-20">
+    <section id="home" className="relative min-h-[80vh] flex flex-col justify-center pt-12 md:pt-20">
       
+      {/* Floating profile picture - top-right corner on desktop, centered at top on mobile */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+        className="mb-8 md:mb-0 md:absolute md:top-12 md:right-0 z-10 flex justify-center items-center self-center md:self-auto"
+      >
+        <div className="relative group w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64">
+          {/* Animated gradient ring behind profile image */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-accentCyan via-accentTeal to-accentPurple rounded-3xl blur-xl opacity-60 group-hover:opacity-85 transition-opacity duration-500 animate-pulse-slow" />
+          
+          <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-slate-950/40 backdrop-blur-sm p-3 flex items-center justify-center">
+            <img 
+              src={profileImage} 
+              alt="Upparalla Bavya" 
+              className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+            />
+          </div>
+          
+          {/* Floating tags representing skills/fields */}
+          <div className="absolute -top-4 -right-4 px-4 py-2 glass-card text-xs font-semibold text-white animate-float-slow shadow-lg flex items-center gap-1.5 border-white/20">
+            <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+            <span>AI Model Tuning</span>
+          </div>
+          
+          <div className="absolute -bottom-4 -left-4 px-4 py-2 glass-card text-xs font-semibold text-white animate-float-medium shadow-lg flex items-center gap-1.5 border-white/20">
+            <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+            <span>Full-Stack Web</span>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Hero Text details */}
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="flex-1 space-y-6 text-center md:text-left z-10"
+        className="w-full md:max-w-[60%] lg:max-w-[65%] space-y-6 text-center md:text-left z-10"
       >
         <div className="space-y-2">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold tracking-tight text-white leading-none">
@@ -139,38 +171,6 @@ export default function Hero() {
           >
             <FaEnvelope />
           </a>
-        </div>
-      </motion.div>
-
-      {/* Floating profile picture */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-        className="flex-1 flex justify-center items-center z-10"
-      >
-        <div className="relative group w-64 h-64 sm:w-80 sm:h-80">
-          {/* Animated gradient ring behind profile image */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-accentCyan via-accentTeal to-accentPurple rounded-3xl blur-xl opacity-60 group-hover:opacity-85 transition-opacity duration-500 animate-pulse-slow" />
-          
-          <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-slate-950/40 backdrop-blur-sm p-3 flex items-center justify-center">
-            <img 
-              src={profileImage} 
-              alt="Upparalla Bavya" 
-              className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
-            />
-          </div>
-          
-          {/* Floating tags representing skills/fields */}
-          <div className="absolute -top-4 -right-4 px-4 py-2 glass-card text-xs font-semibold text-white animate-float-slow shadow-lg flex items-center gap-1.5 border-white/20">
-            <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-            <span>AI Model Tuning</span>
-          </div>
-          
-          <div className="absolute -bottom-4 -left-4 px-4 py-2 glass-card text-xs font-semibold text-white animate-float-medium shadow-lg flex items-center gap-1.5 border-white/20">
-            <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-            <span>Full-Stack Web</span>
-          </div>
         </div>
       </motion.div>
 
