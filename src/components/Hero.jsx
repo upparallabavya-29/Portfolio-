@@ -82,11 +82,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className="flex-1 space-y-6 text-center md:text-left z-10"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accentCyan/10 border border-accentCyan/20 text-accentCyan text-sm font-semibold">
-          <span className="w-2 h-2 rounded-full bg-accentCyan animate-ping" />
-          <span>Actively seeking Winter/Spring 2026 Internships & Full-time Roles</span>
-        </div>
-        
+
         <div className="space-y-2">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold tracking-tight text-white leading-none">
             Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentCyan via-accentTeal to-accentPurple">Upparalla Bavya</span>
