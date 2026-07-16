@@ -162,11 +162,11 @@ export default function Contact() {
                   </div>
                   <div className="min-w-0">
                     <h4 className="text-xs font-semibold text-slate-500 uppercase">Email Me</h4>
-                    <p className="text-sm font-medium text-slate-300 truncate">bhavyabhavyareddy4@gmail.com</p>
+                    <p className="text-sm font-medium text-slate-300 truncate">bavyaupparalla@gmail.com</p>
                   </div>
                 </div>
                 <button
-                  onClick={() => handleCopy("bhavyabhavyareddy4@gmail.com", "email")}
+                  onClick={() => handleCopy("bavyaupparalla@gmail.com", "email")}
                   className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors duration-300"
                   title="Copy email"
                 >

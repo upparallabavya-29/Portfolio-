@@ -157,7 +157,7 @@ export default function Hero() {
               <FaLinkedin />
             </a>
             <a
-              href="mailto:bhavyabhavyareddy4@gmail.com"
+              href="mailto:bavyaupparalla@gmail.com"
               className="hover:text-white transition-colors duration-300 text-2xl"
               title="Email"
             >
