@@ -201,7 +201,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-slate-500 uppercase">Location</h4>
-                  <p className="text-sm font-medium text-slate-300">Kurnool, Andhra Pradesh, India</p>
+                  <p className="text-sm font-medium text-slate-300">Hyderabad, Telangana, India</p>
                 </div>
               </div>
             </div>
