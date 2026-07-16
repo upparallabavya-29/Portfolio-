@@ -47,29 +47,85 @@ export default function Contact() {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitSuccess(false);
+    setErrors(prev => {
+      const { submit, ...rest } = prev;
+      return rest;
+    });
 
-    // Simulate API submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-      // Celebrate successful message send
-      confetti({
-        particleCount: 50,
-        spread: 40,
-        origin: { y: 0.7 },
-        colors: ['#06b6d4', '#14b8a6']
+    if (!accessKey) {
+      // If no access key is configured, fallback to simulation and warn in console
+      console.warn("VITE_WEB3FORMS_ACCESS_KEY is not defined in environment variables. Falling back to simulated submission.");
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        // Celebrate successful message send
+        confetti({
+          particleCount: 50,
+          spread: 40,
+          origin: { y: 0.7 },
+          colors: ['#06b6d4', '#14b8a6']
+        });
+
+        // Clear success banner after 5 seconds
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: formData.name,
+        })
       });
 
-      // Clear success banner after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
+      const data = await response.json();
+      if (data.success) {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        // Celebrate successful message send
+        confetti({
+          particleCount: 50,
+          spread: 40,
+          origin: { y: 0.7 },
+          colors: ['#06b6d4', '#14b8a6']
+        });
+
+        // Clear success banner after 5 seconds
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        throw new Error(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      setIsSubmitting(false);
+      setErrors(prev => ({
+        ...prev,
+        submit: error.message || "Something went wrong. Please try again."
+      }));
+    }
   };
 
   return (
@@ -233,6 +289,17 @@ export default function Contact() {
                   className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold text-center"
                 >
                   Thank you! Your message has been sent successfully.
+                </motion.div>
+              )}
+
+              {/* Error Banner */}
+              {errors.submit && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold text-center"
+                >
+                  {errors.submit}
                 </motion.div>
               )}
 
